@@ -60,8 +60,7 @@ namespace ExcelReader
                 context.Wallet.AddRange(walletList);
                 context.SaveChanges();
             }
-
-
+            
             //
             //using (var context = new GIGLSDbContext())
             //{
