@@ -59,7 +59,7 @@ namespace ExcelReader.TableInserts
         private static void SaveDomesticZonePriceExcelToDB(List<DomesticZonePrice> domesticZonePriceExcel)
         {
             ///////////////////////save to db
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 //2. get list from db
                 var zonesDB = db.Zone.ToList();

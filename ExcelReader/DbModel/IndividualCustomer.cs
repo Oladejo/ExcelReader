@@ -12,7 +12,6 @@ namespace ExcelReader.DbModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public IndividualCustomer()
         {
-            Shipment = new HashSet<Shipment>();
         }
 
         public int IndividualCustomerId { get; set; }
@@ -48,7 +47,5 @@ namespace ExcelReader.DbModel
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shipment> Shipment { get; set; }
     }
 }

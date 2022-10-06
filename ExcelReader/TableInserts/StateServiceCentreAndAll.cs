@@ -23,7 +23,7 @@ namespace ZTest
         private static void AddZone()
         {
             ///////////////////////save to db
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 var zones = new List<Zone>();
 
@@ -89,7 +89,7 @@ namespace ZTest
         private static void SaveStateExcelToDB(List<State> stateExcel)
         {
             ///////////////////////save to db
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 ////2. get list from db
                 //var stateDB = db.State.ToList();
@@ -170,7 +170,7 @@ namespace ZTest
             }
 
             ///////////////////////save to db
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 //1. add Statiob to db
                 db.Station.AddRange(stationList);
@@ -182,7 +182,7 @@ namespace ZTest
             filePath = @"C:\D\Work\docs\GIGL - Copy\GIGL RATES AND ZONES.xlsx";
             sl = new SLDocument(filePath, "ZONES AND CODES");
 
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 for (int row = 5; row <= 48; row++)
                 {

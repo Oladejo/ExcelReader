@@ -1,19 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("Wallet")]
     public partial class Wallet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Wallet()
         {
-            CashOnDeliveryAccount = new HashSet<CashOnDeliveryAccount>();
-            CashOnDeliveryBalance = new HashSet<CashOnDeliveryBalance>();
             WalletTransaction = new HashSet<WalletTransaction>();
         }
 
@@ -39,12 +36,6 @@ namespace ExcelReader.DbModel
         [MaxLength(8)]
         [Timestamp]
         public byte[] RowVersion { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CashOnDeliveryAccount> CashOnDeliveryAccount { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CashOnDeliveryBalance> CashOnDeliveryBalance { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WalletTransaction> WalletTransaction { get; set; }

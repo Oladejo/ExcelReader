@@ -1,11 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("Fleet")]
     public partial class Fleet
     {
@@ -13,8 +12,6 @@ namespace ExcelReader.DbModel
         public Fleet()
         {
             FleetTrip = new HashSet<FleetTrip>();
-            JobCard = new HashSet<JobCard>();
-            StockRequest = new HashSet<StockRequest>();
         }
 
         public int FleetId { get; set; }
@@ -54,15 +51,8 @@ namespace ExcelReader.DbModel
 
         public virtual FleetModel FleetModel { get; set; }
 
-        public virtual Partner Partner { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FleetTrip> FleetTrip { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobCard> JobCard { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockRequest> StockRequest { get; set; }
     }
 }

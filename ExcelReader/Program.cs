@@ -1,12 +1,4 @@
-﻿using ExcelReader.DbModel;
-using ExcelReader.TableInserts;
-using GIGLS.Core.Enums;
-using SpreadsheetLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExcelReader.TableInserts;
 using ZTest;
 
 namespace ExcelReader

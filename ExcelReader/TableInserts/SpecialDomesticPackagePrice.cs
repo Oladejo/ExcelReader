@@ -66,7 +66,7 @@ namespace ZTest
                 //zoneId
                 int zoneId = 0;
                 var zoneName = sl.GetCellValueAsString(row, 4);
-                using (var db = new GIGLSDbContext())
+                using (var db = new TestingDBContext())
                 {
                     var zone = db.Zone.SingleOrDefault(s => s.ZoneName == zoneName);
                     zoneId = zone.ZoneId;
@@ -96,7 +96,7 @@ namespace ZTest
             }
 
             ///////////////////////save to db
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 //1. add SpecialDomesticPackage to db
                 db.SpecialDomesticPackage.AddRange(specialDomesticPackageList);

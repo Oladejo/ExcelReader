@@ -1,18 +1,15 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("FleetTrip")]
     public partial class FleetTrip
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FleetTrip()
         {
-            Manifest = new HashSet<Manifest>();
         }
 
         public int FleetTripId { get; set; }
@@ -51,11 +48,7 @@ namespace ExcelReader.DbModel
         [StringLength(128)]
         public string Captain_Id { get; set; }
 
-        public virtual AspNetUsers AspNetUsers { get; set; }
-
         public virtual Fleet Fleet { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Manifest> Manifest { get; set; }
+               
     }
 }

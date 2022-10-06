@@ -1,11 +1,9 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("FleetPartInventoryHistory")]
     public partial class FleetPartInventoryHistory
     {
@@ -43,12 +41,6 @@ namespace ExcelReader.DbModel
         [StringLength(128)]
         public string MovedBy_Id { get; set; }
 
-        public virtual AspNetUsers AspNetUsers { get; set; }
-
         public virtual FleetPart FleetPart { get; set; }
-
-        public virtual Store Store { get; set; }
-
-        public virtual Vendor Vendor { get; set; }
     }
 }

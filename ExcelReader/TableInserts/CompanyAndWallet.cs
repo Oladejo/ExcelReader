@@ -3,9 +3,6 @@ using GIGLS.Core.Enums;
 using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExcelReader
 {
@@ -21,7 +18,7 @@ namespace ExcelReader
         private static void LoadDB(List<Company> excelList)
         {
             // company
-            using (var context = new GIGLSDbContext())
+            using (var context = new TestingDBContext())
             {
                 context.Company.AddRange(excelList);
                 context.SaveChanges();
@@ -33,14 +30,6 @@ namespace ExcelReader
             foreach (var item in excelList)
             {
                 var walletNumber = "5" + count.ToString("000000");
-                //if (item.CompanyType == (int)CompanyType.Corporate)
-                //{
-                //    walletNumber = "ACC" + count.ToString("00000");
-                //}
-                //else
-                //{
-                //    walletNumber = "ECO" + count.ToString("00000");
-                //}
                 count++;
 
                 var wallet = new Wallet()
@@ -55,34 +44,18 @@ namespace ExcelReader
                 walletList.Add(wallet);
             }
 
-            using (var context = new GIGLSDbContext())
+            using (var context = new TestingDBContext())
             {
                 context.Wallet.AddRange(walletList);
                 context.SaveChanges();
             }
             
-            //
-            //using (var context = new GIGLSDbContext())
-            //{
-            //    var listOfStations = context.Station.ToList();
-
-            //    foreach (var station in listOfStations)
-            //    {
-            //        Console.WriteLine($"{station.StationName}");
-            //    }
-            //}
-
-            //foreach (var item in excelList)
-            //{
-            //    Console.WriteLine($"{item.Name} : {item.DateCreated}");
-            //}
-
             var test = "";
         }
 
         private static List<Company> LoadExcel()
         {
-            SLDocument sl = new SLDocument(@"C:\D\etl\excel_file\gigl customers details.xlsx", "Sheet1");
+            SLDocument sl = new SLDocument(@"C:\D\etl\excel_file\customers details.xlsx", "Sheet1");
 
             List<Company> companyList = new List<Company>();
             List<IndividualCustomer> individualCustomerList = new List<IndividualCustomer>();
@@ -108,7 +81,7 @@ namespace ExcelReader
                         City = sl.GetCellValueAsString(row, 7),
                         PhoneNumber = sl.GetCellValueAsString(row, 8),
                         Email = sl.GetCellValueAsString(row, 9),
-                        CompanyStatus = 1, //sl.GetCellValueAsInt32(row, 15),
+                        CompanyStatus = 1, 
                         CustomerCode = sl.GetCellValueAsString(row, 16),
                         DateCreated = sl.GetCellValueAsDateTime(row, 13),
                         DateModified = DateTime.Now,
@@ -136,7 +109,7 @@ namespace ExcelReader
                         City = sl.GetCellValueAsString(row, 7),
                         PhoneNumber = sl.GetCellValueAsString(row, 8),
                         Email = sl.GetCellValueAsString(row, 9),
-                        CompanyStatus = 1, //sl.GetCellValueAsInt32(row, 15),
+                        CompanyStatus = 1, 
                         CustomerCode = sl.GetCellValueAsString(row, 16),
                         DateCreated = sl.GetCellValueAsDateTime(row, 13),
                         DateModified = DateTime.Now

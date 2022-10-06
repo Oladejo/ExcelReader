@@ -86,7 +86,7 @@ namespace ZTest
         private static void SaveDomesticRouteZoneMapExcelToDB(List<Station> stationsExcel, List<DomesticRouteZoneMap> domesticRouteZoneMapsExcel)
         {
             ///////////////////////save to db
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 //1. add Stations to db
                 List<Station> stationsToInsert = new List<Station>();

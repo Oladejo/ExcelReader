@@ -1,11 +1,9 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("FleetPartInventory")]
     public partial class FleetPartInventory
     {
@@ -32,6 +30,5 @@ namespace ExcelReader.DbModel
 
         public virtual FleetPart FleetPart { get; set; }
 
-        public virtual Store Store { get; set; }
     }
 }

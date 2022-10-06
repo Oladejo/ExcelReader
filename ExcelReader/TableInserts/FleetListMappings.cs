@@ -36,7 +36,7 @@ namespace ExcelReader.TableInserts
                 isAdded = fleetMakeSet.Add(fleetMakeName);
                 if (isAdded)
                 {
-                    using (var db = new GIGLSDbContext())
+                    using (var db = new TestingDBContext())
                     {
                         fleetMake = new FleetMake
                         {
@@ -51,7 +51,7 @@ namespace ExcelReader.TableInserts
                 }
                 else
                 {
-                    using (var db = new GIGLSDbContext())
+                    using (var db = new TestingDBContext())
                     {
                         fleetMake = db.FleetMake.Single(s => s.MakeName == fleetMakeName);
                     }
@@ -64,7 +64,7 @@ namespace ExcelReader.TableInserts
                 isAdded = fleetModelSet.Add(fleetModelName);
                 if (isAdded)
                 {
-                    using (var db = new GIGLSDbContext())
+                    using (var db = new TestingDBContext())
                     {
                         fleetModel = new FleetModel
                         {
@@ -80,7 +80,7 @@ namespace ExcelReader.TableInserts
                 }
                 else
                 {
-                    using (var db = new GIGLSDbContext())
+                    using (var db = new TestingDBContext())
                     {
                         fleetModel = db.FleetModel.Single(s => s.ModelName == fleetModelName);
                     }
@@ -93,7 +93,7 @@ namespace ExcelReader.TableInserts
                 isAdded = fleetPartnerSet.Add(fleetPartnerName);
                 if (isAdded)
                 {
-                    using (var db = new GIGLSDbContext())
+                    using (var db = new TestingDBContext())
                     {
                         partner = new Partner
                         {
@@ -108,7 +108,7 @@ namespace ExcelReader.TableInserts
                 }
                 else
                 {
-                    using (var db = new GIGLSDbContext())
+                    using (var db = new TestingDBContext())
                     {
                         partner = db.Partner.Single(s => s.PartnerName == fleetPartnerName);
                     }
@@ -160,7 +160,7 @@ namespace ExcelReader.TableInserts
 
 
             ///////////// save to DB
-            using (var db = new GIGLSDbContext())
+            using (var db = new TestingDBContext())
             {
                 db.Fleet.AddRange(fleetExcel);
                 db.SaveChanges();

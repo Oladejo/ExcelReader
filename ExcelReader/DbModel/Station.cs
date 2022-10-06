@@ -1,19 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("Station")]
     public partial class Station
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Station()
         {
-            Dispatch = new HashSet<Dispatch>();
-            Dispatch1 = new HashSet<Dispatch>();
             DomesticRouteZoneMap = new HashSet<DomesticRouteZoneMap>();
             DomesticRouteZoneMap1 = new HashSet<DomesticRouteZoneMap>();
             HaulageDistanceMapping = new HashSet<HaulageDistanceMapping>();
@@ -39,12 +36,6 @@ namespace ExcelReader.DbModel
         [MaxLength(8)]
         [Timestamp]
         public byte[] RowVersion { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dispatch> Dispatch { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dispatch> Dispatch1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DomesticRouteZoneMap> DomesticRouteZoneMap { get; set; }

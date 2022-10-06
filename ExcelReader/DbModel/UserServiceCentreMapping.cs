@@ -1,11 +1,9 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ExcelReader.DbModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("UserServiceCentreMapping")]
     public partial class UserServiceCentreMapping
     {
@@ -28,8 +26,6 @@ namespace ExcelReader.DbModel
         [MaxLength(8)]
         [Timestamp]
         public byte[] RowVersion { get; set; }
-
-        public virtual AspNetUsers AspNetUsers { get; set; }
 
         public virtual ServiceCentre ServiceCentre { get; set; }
     }

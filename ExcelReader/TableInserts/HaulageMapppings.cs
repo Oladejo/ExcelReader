@@ -20,7 +20,7 @@ namespace ExcelReader.TableInserts
         private static void SaveHaulageDistanceMappingPriceToDB()
         {
             var listToSave = GetHaluageDistancePriceFromExcel();
-            using (var context = new GIGLSDbContext())
+            using (var context = new TestingDBContext())
             {
                 context.HaulageDistanceMappingPrice.AddRange(listToSave);
                 context.SaveChanges();
@@ -123,7 +123,7 @@ namespace ExcelReader.TableInserts
         {
             Haulage haulage = null;
 
-            using (var context = new GIGLSDbContext())
+            using (var context = new TestingDBContext())
             {
                 haulage = context.Haulage.FirstOrDefault(s => s.Tonne.Equals(tonne));
 
@@ -150,7 +150,7 @@ namespace ExcelReader.TableInserts
         private static void SaveHaulageDistanceMappingToDB()
         {
             var listToSave = GetStationExcelListThatMatch();
-            using (var context = new GIGLSDbContext())
+            using (var context = new TestingDBContext())
             {
                 var entityList = new List<HaulageDistanceMapping>();
                 foreach (var item in listToSave)
@@ -251,7 +251,7 @@ namespace ExcelReader.TableInserts
             //save to DB stations not in the system
             foreach (var stationName in stationDBListThatDoNotMatch)
             {
-                using (var db = new GIGLSDbContext())
+                using (var db = new TestingDBContext())
                 {
                     //populate Station
                     var station = new Station()
@@ -292,7 +292,7 @@ namespace ExcelReader.TableInserts
         private static List<Station> GetStationsFromDB()
         {
             var stations = new List<Station>();
-            using (var context = new GIGLSDbContext())
+            using (var context = new TestingDBContext())
             {
                 stations = context.Station.ToList();
             }
